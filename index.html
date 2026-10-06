@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Personal Expense Tracker</h1>
+
+    <!-- Summary cards -->
+    <section class="cards">
+      <div class="card"><span class="card-label">Total Expenses</span><strong id="totalAmount">0.00</strong></div>
+      <div class="card"><span class="card-label">Number of Expenses</span><strong id="expenseCount">0</strong></div>
+      <div class="card"><span class="card-label">This Month's Expenses</span><strong id="monthAmount">0.00</strong></div>
+    </section>
+
+    <!-- Input form -->
+    <section class="panel">
+      <h2 id="formTitle">Add an expense</h2>
+      <form id="expenseForm" novalidate>
+        <div class="field">
+          <label for="name">Expense name</label>
+          <input type="text" id="name" placeholder="e.g. Lunch">
+          <small class="error" id="nameError"></small>
+        </div>
+        <div class="field">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" step="0.01" placeholder="0.00">
+          <small class="error" id="amountError"></small>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="">Select a category</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Entertainment</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Health</option>
+            <option>Other</option>
+          </select>
+          <small class="error" id="categoryError"></small>
+        </div>
+        <div class="field">
+          <label for="date">Date</label>
+          <input type="date" id="date">
+          <small class="error" id="dateError"></small>
+        </div>
+        <div class="actions">
+          <button type="submit" id="submitBtn" class="btn primary">Add expense</button>
+          <button type="button" id="cancelBtn" class="btn" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Table -->
+    <section class="panel">
+      <div class="toolbar">
+        <div class="field inline">
+          <label for="filterCategory">Filter by category</label>
+          <select id="filterCategory">
+            <option value="All">All categories</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Entertainment</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Health</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="button" id="clearAllBtn" class="btn danger">Clear All</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Amount</th><th>Category</th><th>Date</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="expenseBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyMessage" class="empty">No expenses yet. Add your first one above.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
